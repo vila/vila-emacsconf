@@ -19,7 +19,7 @@
 (defun vila-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
 
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
+(add-hook 'semantic-init-hooks 'vila-semantic-hook)
 
 
 (defun vila-cedet-hook ()
