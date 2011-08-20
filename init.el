@@ -134,29 +134,19 @@
 			   (progn (setq old-fullscreen current-value)
 				  'fullboth)))))
 
-;; CEDET Settings
-(defun load-cedet-environment ()
-  "Loads the CEDET environment and sets it up"
-  (interactive)                          
-  (load-file "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
-  ;; dont load project management
-  (global-ede-mode 0)  
-  ;; Enable prototype help and smart completion                     
-  (semantic-load-enable-code-helpers)
-  ;; Enable template insertion menu
-  (global-srecode-minor-mode 1))
+;
 
 
 ;; Load CEDET if it exists
 (if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
-    (load-cedet-environment))
+    (load-file "~/.emacs.d/extras/cedet-config.el"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Key bindings                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Expand on C-SPC
-(global-set-key (kbd "C-<SPC>") 'dabbrev-expand)
+;; Expand on M-<
+(global-set-key (kbd "M-<") 'dabbrev-expand)
 
 
 ;; Indent whole buffer on C-c b
