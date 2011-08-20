@@ -25,7 +25,7 @@
 (defun vila-cedet-hook ()
   (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
   (local-set-key "\C-c?" 'semantic-ia-complete-symbol)
-  (local-set-key (kbd "<C-SPC>") semantic-complete-analyze-inline)
+  (local-set-key (kbd "<C-SPC>") 'semantic-complete-analyze-inline)
   ;;(local-set-key "\C-c=" 'semantic-decoration-include-visit)
 
   (local-set-key "\C-cj" 'semantic-ia-fast-jump)
