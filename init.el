@@ -137,10 +137,6 @@
 ;
 
 
-;; Load CEDET if it exists
-(if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
-    (load-file "~/.emacs.d/extras/cedet-config.el"))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Key bindings                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -179,3 +175,8 @@
 ;; Toggle fullscreen emacs
 (global-set-key (kbd "<f12>") 'toggle-fullscreen)
 
+
+
+;; Load CEDET if it exists
+(if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
+    (load-file "~/.emacs.d/extras/cedet-config.el"))
