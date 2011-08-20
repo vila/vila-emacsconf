@@ -81,6 +81,11 @@
     '(("\\(REVIEW\\|FIXME\\|TODO\\|BUG\\)" 1 font-lock-warning-face t))))
 (add-hook 'c-mode-common-hook 'highlight-todo)
 (add-hook 'c++-mode-common-hook 'highlight-todo)
+
+;; Load CEDET if it exists
+(if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
+    (load-cedet-environment))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Libs/Extras                          ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -129,6 +134,19 @@
 			     (if (boundp 'old-fullscreen) old-fullscreen nil)
 			   (progn (setq old-fullscreen current-value)
 				  'fullboth)))))
+
+;; CEDET Settings
+(defun load-cedet-environment ()
+  "Loads the CEDET environment and sets it up"
+  (interactive)                          
+  (load-file "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
+  ;; dont load project management
+  (global-ede-mode 0)  
+  ;; Enable prototype help and smart completion                     
+  (semantic-load-enable-code-helpers)
+  ;; Enable template insertion menu
+  (global-srecode-minor-mode 1))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Key bindings                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
