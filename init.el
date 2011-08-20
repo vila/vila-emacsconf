@@ -82,10 +82,6 @@
 (add-hook 'c-mode-common-hook 'highlight-todo)
 (add-hook 'c++-mode-common-hook 'highlight-todo)
 
-;; Load CEDET if it exists
-(if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
-    (load-cedet-environment))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Libs/Extras                          ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -146,6 +142,11 @@
   (semantic-load-enable-code-helpers)
   ;; Enable template insertion menu
   (global-srecode-minor-mode 1))
+
+
+;; Load CEDET if it exists
+(if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
+    (load-cedet-environment))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Key bindings                  ;;
