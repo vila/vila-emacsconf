@@ -28,6 +28,9 @@
 ;; PC Selection mode (S-left to extend regsion)
 (pc-selection-mode)
 
+;; Disable right mouse button
+(global-unset-key (kbd "<mouse-3>"))
+
 ;; C-x, C-v, C-c for cut, paste and copy
 (cua-mode t)
 
