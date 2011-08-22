@@ -69,6 +69,9 @@
 (setq inhibit-startup-message t) 
 (setq initial-scratch-message nil)
 
+;; Windmove (meta-arrows to change frame)
+(windmove-default-keybindings 'meta)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; C/C++ settings                       ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
