@@ -72,10 +72,7 @@
 ;; Windmove (meta-arrows to change frame)
 (windmove-default-keybindings 'meta)
 
-;; Change the color of the Modeline for the active window
-(set-face-background 'modeline          zenburn-red-5)
-(set-face-foreground 'modeline          zenburn-yellow)
-(set-face-background 'modeline-inactive zenburn-bg-1)
+
 ;(set-face-background 'fringe zenburn-bg-1)
 
 ;; Stop the damn blinking cursor
@@ -107,6 +104,11 @@
 (color-theme-initialize)
 (setq color-theme-is-global t)
 (color-theme-zenburn)
+
+;; Change the color of the Modeline for the active window
+(set-face-background 'modeline          zenburn-red-5)
+(set-face-foreground 'modeline          zenburn-yellow)
+(set-face-background 'modeline-inactive zenburn-bg-1)
 
 ;; highlight the current line; set a custom face, so we can
 ;; recognize from the normal marking (selection)
