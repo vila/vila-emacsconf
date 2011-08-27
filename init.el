@@ -22,6 +22,19 @@
 (add-hook 'shell-mode-hook
           'ansi-color-for-comint-mode-on)
 
+;; Highlight parenthesis
+(setq show-paren-delay 0)
+(show-paren-mode t)
+(setq show-paren-style 'parentheses)
+(set-face-foreground 'show-paren-match-face "green") 
+(set-face-attribute 'show-paren-match-face nil 
+        :weight 'bold :underline nil :overline nil :slant 'normal)
+(set-face-foreground 'show-paren-mismatch-face "red") 
+(set-face-attribute 'show-paren-mismatch-face nil 
+                    :weight 'bold :underline t :overline nil :slant 'normal)
+
+
+
 ;; Visible bell
 (setq visible-bell t)
 
@@ -98,6 +111,11 @@
 ;; Libs/Extras                          ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; iedit
+(require 'iedit)
+(define-key global-map (kbd "C-;") 'iedit-mode)
+
+
 ;; Color theme - zenburn
 (require 'color-theme)
 (require 'color-theme-zenburn)
@@ -148,9 +166,6 @@
 			   (progn (setq old-fullscreen current-value)
 				  'fullboth)))))
 
-;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom Keybindings                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -195,14 +210,3 @@
 ;; Load CEDET if it exists
 (if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
     (load-file "~/.emacs.d/extras/cedet-config.el"))
-
-
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
