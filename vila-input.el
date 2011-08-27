@@ -1,7 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Keybindings
 
-
 ;; iedit search and replace
 (define-key global-map (kbd "C-;") 'iedit-mode)
 
@@ -23,7 +22,7 @@
 (global-set-key (kbd "C-c d") 'duplicate-line)
 
 ;; Use the ido version of imenu with C-x j
-(global-set-key (kbd "C-c j") 'ido-goto-symbol)
+(global-set-key (kbd "C-x j") 'ido-goto-symbol)
 
 ;; Toggle fullscreen emacs
 (global-set-key (kbd "<f12>") 'toggle-fullscreen)
