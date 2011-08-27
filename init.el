@@ -152,12 +152,13 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Custom Key bindings                  ;;
+;; Custom Keybindings                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Expand on M-<
 (global-set-key (kbd "M-<") 'dabbrev-expand)
 
+(global-set-key (kbd "<f1>") 'recompile)
 
 ;; Indent whole buffer on C-c b
 (defun indent-buffer ()
@@ -194,3 +195,14 @@
 ;; Load CEDET if it exists
 (if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
     (load-file "~/.emacs.d/extras/cedet-config.el"))
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
