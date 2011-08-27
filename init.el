@@ -113,8 +113,6 @@
 
 ;; iedit
 (require 'iedit)
-(define-key global-map (kbd "C-;") 'iedit-mode)
-
 
 ;; Color theme - zenburn
 (require 'color-theme)
@@ -166,28 +164,16 @@
 			   (progn (setq old-fullscreen current-value)
 				  'fullboth)))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Custom Keybindings                  ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Expand on M-<
-(global-set-key (kbd "M-<") 'dabbrev-expand)
-
-(global-set-key (kbd "<f1>") 'recompile)
 
 ;; Indent whole buffer on C-c b
 (defun indent-buffer ()
   "Indent every line in the buffer."
   (interactive)
   (indent-region (point-min) (point-max) nil))
-(global-set-key (kbd "C-c b") 'indent-buffer)
-
-;; Next/Prev line on M-n and M-p, same as C-n and C-p
-(define-key global-map (kbd "M-n") 'next-line)
-(define-key global-map (kbd "M-p") 'previous-line)
 
 
-;; Duplicate current line with C-c C-c
+
+;; Duplicate current line
 ;; TODO if current line is blank, copy previous line instead
 (defun duplicate-line()
   (interactive)
@@ -196,17 +182,15 @@
   (yank)
   (newline)
   (yank))
-;; TODO change keybinding
-(global-set-key (kbd "C-c C-c") 'duplicate-line)
 
-;; Use the ido version of imenu with C-x j
-(global-set-key (kbd "C-x j") 'ido-goto-symbol)
 
-;; Toggle fullscreen emacs
-(global-set-key (kbd "<f12>") 'toggle-fullscreen)
+
 
 
 
 ;; Load CEDET if it exists
 (if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
     (load-file "~/.emacs.d/extras/cedet-config.el"))
+
+;; Load keybindings
+(load-file "~/.emacs.d/vila-input.el")
