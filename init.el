@@ -35,6 +35,8 @@
 
 
 
+(setq compilation-scroll-output t)
+
 ;; Visible bell
 (setq visible-bell t)
 
@@ -200,10 +202,13 @@
    (set-visited-file-name new-name)
    (set-buffer-modified-p nil))))))
 
+;; YaSnippet awesomeness
 
-;; Load CEDET if it exists
-(if (file-exists-p "~/.emacs.d/site-lisp/cedet-1.0/common/cedet.el")
-    (load-file "~/.emacs.d/extras/cedet-config.el"))
+(add-to-list 'load-path
+             "~/.emacs.d/plugins/yasnippet-0.6.1c")
+    (require 'yasnippet) ;; not yasnippet-bundle
+    (yas/initialize)
+    (yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
 
 ;; Load keybindings
 (load-file "~/.emacs.d/vila-input.el")
