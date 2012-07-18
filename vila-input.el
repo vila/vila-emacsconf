@@ -24,5 +24,11 @@
 ;; Use the ido version of imenu with C-x j
 (global-set-key (kbd "C-x j") 'ido-goto-symbol)
 
+;; GTAGS keybindings
+(global-set-key (kbd "C-<return>") 'gtags-find-tag-from-here)
+(global-set-key (kbd "C-'") 'gtags-pop-stack)
+(global-set-key (kbd "C-ä") 'gtags-find-rtag)
+
+
 ;; Toggle fullscreen emacs
 (global-set-key (kbd "<f12>") 'toggle-fullscreen)

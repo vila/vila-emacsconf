@@ -46,6 +46,8 @@
 ;; Disable right mouse button
 (global-unset-key (kbd "<mouse-3>"))
 
+;; Rebind c-ret so that we can use it for 
+(setq cua-rectangle-mark-key (kbd "C-S-<return>"))
 ;; C-x, C-v, C-c for cut, paste and copy
 (cua-mode t)
 
@@ -101,6 +103,12 @@
 (setq c-default-style "k&r")
 (setq c-basic-offset 4)
 
+;; Remove indentation for being in namespace
+(defun remove-namespace-indent()
+  (c-set-offset 'innamespace 0))
+(add-hook 'c++-mode-common-hook 'remove-namespace-indent)
+
+
 
 ;; Highlight TODO and similar in comments
 (defun highlight-todo ()
@@ -108,6 +116,10 @@
     '(("\\(REVIEW\\|FIXME\\|TODO\\|BUG\\)" 1 font-lock-warning-face t))))
 (add-hook 'c-mode-common-hook 'highlight-todo)
 (add-hook 'c++-mode-common-hook 'highlight-todo)
+
+;; Enable gtags for C/C++
+(add-hook 'c-mode-common-hook '(lambda () (gtags-mode t)))
+(add-hook 'c++-mode-common-hook '(lambda () (gtags-mode t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Libs/Extras                          ;;
@@ -209,6 +221,28 @@
     (require 'yasnippet) ;; not yasnippet-bundle
     (yas/initialize)
     (yas/load-directory "~/.emacs.d/extras/yasnippet-0.6.1c/snippets")
+
+
+;; GTAGS update on file save
+(defun gtags-root-dir ()
+  "Returns GTAGS root directory or nil if doesn't exist."
+  (with-temp-buffer
+    (if (zerop (call-process "global" nil t nil "-pr"))
+        (buffer-substring (point-min) (1- (point-max)))
+      nil)))
+(defun gtags-update ()
+  "Make GTAGS incremental update"
+  (call-process "global" nil nil nil "-u"))
+(defun gtags-update-hook ()
+  (when (gtags-root-dir)
+    (gtags-update)))
+
+(add-hook 'after-save-hook #'gtags-update-hook)
+
+
+
+
+
 
 ;; Load keybindings
 (load-file "~/.emacs.d/vila-input.el")
